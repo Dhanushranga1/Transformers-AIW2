@@ -1,4 +1,4 @@
-# Transformers for Text Classification — Week 2 Summary
+# Transformers — Week 2 Summary
 
 Over the past week, I focused on getting a deep understanding of Transformer architectures. I studied the original paper, *Attention Is All You Need*, and broke down concepts like self-attention, multi-head attention, positional encoding, and the full encoder-decoder pipeline.
 
