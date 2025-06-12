@@ -9,7 +9,7 @@ A huge shoutout to Umar Jamil — his YouTube series was incredibly helpful. I f
 - Feed-forward layers  
 - Multi-head attention block  
 
-That hands-on coding experience was very valuable to me
+That hands-on coding experience was very valuable to me.
 
 ## Project: IMDb Sentiment Classification with Transformers
 
@@ -25,7 +25,7 @@ To apply what I learned, I built a sentiment classification pipeline using my ow
 
 Each model was trained on a smaller subset (2000 train samples, 500 test samples) for benchmarking purposes.
 
-## Final Results
+### Final Results (IMDb)
 
 | Model      | Accuracy | F1 Score | Precision | Recall |
 |------------|----------|----------|-----------|--------|
@@ -33,8 +33,42 @@ Each model was trained on a smaller subset (2000 train samples, 500 test samples
 | DistilBERT | 0.884    | 0.8831   | 0.8795    | 0.8866 |
 | RoBERTa    | 0.910    | 0.9072   | 0.9244    | 0.8907 |
 
+---
+
+## Project: Image Classification with Vision Transformers (ViT)
+
+In the second part of the week, I moved on to **Vision Transformers**, applying the same concepts to image classification using the **CIFAR-10** dataset.
+
+### What I Tried:
+- Used `google/vit-base-patch16-224-in21k` from Hugging Face
+- Applied advanced `torchvision` transforms like resizing, cropping, flipping, and normalization
+- Used `ViTImageProcessor` to preprocess images for the ViT model
+- Implemented a full training pipeline using PyTorch and Hugging Face Transformers
+
+### Challenges Faced:
+- Faced GPU under-utilization on Colab (solved by switching to T4 and tuning batch sizes)
+- Needed to clamp image pixel values and disable redundant rescaling to avoid preprocessing errors
+- Training was **very slow**, so I limited the dataset size and number of epochs
+- Experimented with learning rate schedulers to boost convergence
+
+### Final Results (CIFAR-10 on ViT)
+
+| Metric     | Score   |
+|------------|---------|
+| Accuracy   | 0.9329  |
+| Precision  | 0.9328  |
+| Recall     | 0.9329  |
+| F1 Score   | 0.9327  |
+
+> Trained for 3 epochs on ~50,000 CIFAR-10 images with data augmentation and AdamW optimizer.  
+> Performance was excellent after resolving preprocessing bottlenecks.
+
+---
+
 ## TL;DR
 
-- BERT performed well, DistilBERT was faster with slightly lower accuracy, and RoBERTa achieved the best overall scores.
-- Going from scratch implementation to real-world fine-tuning helped solidify my understanding.
-- This wraps up the text classification part of Week 2. Next up: Vision Transformers.
+- BERT-based models handled text classification efficiently with high accuracy across the board.
+- RoBERTa was the top performer in sentiment classification.
+- Vision Transformers were slower to train, but delivered strong performance on image data.
+- Learned to debug real-world model training issues, from GPU usage to Hugging Face quirks.
+
